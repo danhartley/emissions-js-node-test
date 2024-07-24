@@ -1,4 +1,5 @@
 import { node } from '@danhartley/emissions'
+import { parseArgs, format } from './utils.js'
 
 import puppeteer from 'puppeteer'
 
@@ -14,7 +15,7 @@ import puppeteer from 'puppeteer'
     height: 1080
   })
 
-  const url = 'https://www.smashingmagazine.com'
+  const { url } = parseArgs({ args: process.argv })
 
   async function getReport(page, url) {    
     const options = {
@@ -35,13 +36,6 @@ import puppeteer from 'puppeteer'
       greenHosting,
       data,
     } = await node.getPageEmissions(page, url, options)
-
-    const format = number => {
-      return (number).toLocaleString('en-GB', {
-        minimumFractionDigits: 1,
-        maximumFractionDigits: 2
-      });
-    };
   
     console.log(`Report for ${url}`)
     console.log('Page weight: ', `${format(pageWeight / 1000)} Kbs`)

@@ -22,6 +22,10 @@ import puppeteer from 'puppeteer'
         verbose: false,
         forceGreen: true,
       },
+      compressionOptions: {
+        br: 1,
+        gzip: 9
+      },
     }
   
     const {
@@ -47,12 +51,12 @@ import puppeteer from 'puppeteer'
       greenHosting ? 'Hosting: green hosting' : 'Hosting: not green hosting'
     )
   
-    console.log('groupedByType')
-    console.log(data?.groupedByType)
-    console.log('totalUncachedBytes')
-    console.log(data?.totalUncachedBytes)
-    console.log('groupedByTypeBytes')
-    console.log(data?.groupedByTypeBytes)
+    // console.log('groupedByType')
+    // console.log(data?.groupedByType)
+    // console.log('totalUncachedBytes')
+    // console.log(data?.totalUncachedBytes)
+    // console.log('groupedByTypeBytes')
+    // console.log(data?.groupedByTypeBytes)
   }
 
   await getReport(page, url)

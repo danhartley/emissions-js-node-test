@@ -7,13 +7,14 @@ export const format = number => {
 
 export const parseArgs = ({args}) => {
   const argOptions = {
-      verboseArgs: ['-v', '--verbose']
-    , urlArgs: ['-u', '--url']
+      verboseArgs: ['-v', '--verbose'],
+      urlArgs: ['-u', '--url'],
+      lighthouseArgs: ['-lh', '--lighthouse'],
   }
 
-  const { verboseArgs, urlArgs } = argOptions
+  const { verboseArgs, urlArgs, lighthouseArgs } = argOptions
   
-  let url, verbose = false
+  let url, verbose, lh = false
 
   const argLength = args.length
   
@@ -30,7 +31,11 @@ export const parseArgs = ({args}) => {
               url = nextArg.includes('http') ? nextArg : `https://${nextArg}`
           }
       }
+
+      if(lighthouseArgs.includes(val)) {
+        lh = true
+      }      
   }
 
-  return { url, verbose }
+  return { url, verbose, lh }
 }

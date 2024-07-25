@@ -1,4 +1,4 @@
-import { node } from '@danhartley/emissions'
+import { node, reports } from '@danhartley/emissions'
 import { parseArgs, format } from './utils.js'
 import { getLighthouseReport } from './lighthouse.js'
 import lighthouse from 'lighthouse'
@@ -59,11 +59,11 @@ import puppeteer from 'puppeteer'
   await getReport(page, url)
 
   if(lh) {
-    const lhReport = await getLighthouseReport({
-        lighthouse
-      , chromeLauncher
-      , url
-    })
+    const lhReport = await reports.lighthouse(
+        url,
+        lighthouse,
+        chromeLauncher,
+    )
 
     const summary = lhReport.summary
 

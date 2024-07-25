@@ -39,3 +39,19 @@ export const parseArgs = ({args}) => {
 
   return { url, verbose, lh }
 }
+
+export const getLighthouseReport = async (reports, url, lighthouse, chromeLauncher) => {    
+  const lhReport = await reports.lighthouse(
+    url,
+    lighthouse,
+    chromeLauncher,
+  )
+
+  const summary = lhReport.summary
+
+  console.log('Lighthouse report:')
+  console.log('Transfer size: ', `${format(summary.totalResourceTransferSize)} Kbs`)
+  console.log('Total byte weight: ', `${format(summary.totalByteWeight)} Kbs`)
+  console.log('Request count: ', `${summary.requestCount}`)
+  console.log('DOM count: ', `${summary.DOMSize}`)
+}

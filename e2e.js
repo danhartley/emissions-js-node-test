@@ -62,7 +62,13 @@ import puppeteer from 'puppeteer'
     await getReport(page, url)
 
     if(lh) {
-      getLighthouseReport(reports, url, lighthouse, chromeLauncher)
+      const flags = {
+        // accessibility, best-practices, performance, pwa, seo
+        // default if none provided: performance
+        // this flag will ovveride the default i.e. include performance in addition to other categories
+        onlyCategories: ['performance', 'accessibility']
+      }
+      getLighthouseReport(reports, url, lighthouse, chromeLauncher, flags)
     }
   } catch(e) {
     console.log('\x1b[33m', e.message)

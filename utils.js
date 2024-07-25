@@ -40,11 +40,12 @@ export const parseArgs = ({args}) => {
   return { url, verbose, lh }
 }
 
-export const getLighthouseReport = async (reports, url, lighthouse, chromeLauncher) => {    
+export const getLighthouseReport = async (reports, url, lighthouse, chromeLauncher, flags) => {    
   const lhReport = await reports.lighthouse(
     url,
     lighthouse,
     chromeLauncher,
+    flags,
   )
 
   const summary = lhReport.summary

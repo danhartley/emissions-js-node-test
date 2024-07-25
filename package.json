@@ -10,6 +10,7 @@
   "license": "ISC",
   "type": "module",
   "devDependencies": {
+    "@danhartley/emissions": "^0.1.0",
     "lighthouse": "^12.1.0",
     "puppeteer": "^22.12.1"
   }

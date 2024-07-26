@@ -34,7 +34,7 @@ import puppeteer from 'puppeteer'
       }
     
       const {
-        pageWeight,
+        bytes,
         count,
         emissions,
         greenHosting,
@@ -42,7 +42,7 @@ import puppeteer from 'puppeteer'
       } = await node.getPageEmissions(page, url, options)
     
       console.log(`Report for ${url}`)
-      console.log('Page weight: ', `${format(pageWeight / 1000)} Kbs`)
+      console.log('Page weight: ', `${format(bytes / 1000)} Kbs`)
       console.log('Request count: ', count)
       console.log('Emissions: ', `${format(emissions * 1000)} mg of CO2`)
       console.log(
@@ -57,7 +57,7 @@ import puppeteer from 'puppeteer'
       console.log(data?.groupedByTypeBytes)
     }
 
-    if(url === undefined) throw new Error('Please provide a url in the command line arguments e.g. -u example.com')
+    if(url === undefined) throw new Error('Please provide a url in the command line arguments e.g. node e2e.js -u example.com')
 
     await getReport(page, url)
 
